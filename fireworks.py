@@ -9,14 +9,14 @@ black = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
 
-balls = []
+particles = []
 for i in range(10):
-    ball = pygame.image.load("ball.gif")
-    ballrect = ball.get_rect()
-    ballrect.x = width / 2
-    ballrect.bottom = height
+    particle = pygame.image.load("casa_silicon_ions_40.jpg")
+    particlerect = particle.get_rect()
+    particlerect.x = width / 2
+    particlerect.bottom = height
     speed = [random.randint(-3, 3), random.randint(-10, -5)]
-    balls.append((ball, ballrect, speed))
+    particles.append((particle, particlerect, speed))
 
 while 1:
     for event in pygame.event.get():
@@ -24,15 +24,15 @@ while 1:
             sys.exit()
     screen.fill(black)
 
-    for ball, ballrect, speed in balls:
-        ballrect.x += speed[0]
-        ballrect.y += speed[1]
-#       ballrect = ballrect.move(speed)
+    for particle, particlerect, speed in particles:
+        particlerect.x += speed[0]
+        particlerect.y += speed[1]
+#       particlerect = particlerect.move(speed)
         speed[1] += gravity
         print(speed)
-        print(ballrect.x, ballrect.y)
+        print(particlerect.x, particlerect.y)
 
-        screen.blit(ball, ballrect)
+        screen.blit(particle, particlerect)
 
     pygame.display.flip()
     time.sleep(0.01)
