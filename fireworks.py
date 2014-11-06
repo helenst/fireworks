@@ -15,7 +15,7 @@ for i in range(10):
     ballrect = ball.get_rect()
     ballrect.x = width / 2
     ballrect.bottom = height
-    speed = [random.uniform(0, 3), random.uniform(-1, -5)]
+    speed = [random.randint(-3, 3), random.randint(-10, -5)]
     balls.append((ball, ballrect, speed))
 
 while 1:
@@ -25,8 +25,12 @@ while 1:
     screen.fill(black)
 
     for ball, ballrect, speed in balls:
-        ballrect = ballrect.move(speed)
+        ballrect.x += speed[0]
+        ballrect.y += speed[1]
+#       ballrect = ballrect.move(speed)
         speed[1] += gravity
+        print(speed)
+        print(ballrect.x, ballrect.y)
 
         screen.blit(ball, ballrect)
 
